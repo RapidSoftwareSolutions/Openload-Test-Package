@@ -15,10 +15,10 @@ $app->post('/api/Openload/renameFolder', function ($request, $response) {
     $data['login'] = $post_data['args']['login'];
     $data['key'] = $post_data['args']['key'];
     $data['folder'] = $post_data['args']['folderId'];
-
+    $data['name'] = $post_data['args']['folderId'];
     $query_str = $settings['api_url'] . "file/renamefolder";
     $client = $this->httpClient;
-    $data['name'] = 'name';
+    
 
     try {
 
