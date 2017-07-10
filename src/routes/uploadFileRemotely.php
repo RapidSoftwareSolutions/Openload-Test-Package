@@ -15,11 +15,29 @@ $app->post('/api/Openload/uploadFileRemotely', function ($request, $response) {
     $data['login'] = $post_data['args']['login'];
     $data['key'] = $post_data['args']['key'];
     $data['url'] = $post_data['args']['url'];
+
     if(!empty($post_data['args']['folderId'])){
         $data['folder'] = $post_data['args']['folderId'];
     }
     $query_str = $settings['api_url'] . "remotedl/add";
     $client = $this->httpClient;
+
+
+    $uploadServiceResponse = $client->post($settings['uploadServiceUrl'], [
+        'multipart' => [
+            [
+                'name' => 'length',
+                'contents' => 20
+            ],
+            [
+                "name" => "file",
+                "filename" => "filename.jpg",
+                "contents" => fopen($data['url'], 'r')
+            ]
+        ]
+    ]);
+    $uploadServiceResponseBody = $uploadServiceResponse->getBody()->getContents();
+    $data['url'] = json_decode($uploadServiceResponseBody)->file;
 
     try {
 
