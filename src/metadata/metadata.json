@@ -1,0 +1,438 @@
+{
+  "package": "Openload",
+  "tagline": "Openload API",
+  "description": "Connect to the Openload File Sharing API to upload, share and edit any file. Test an API call in your browser and export the code snippet into your app.",
+  "image": "https://openload.co/assets/img/logo.png",
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Openload-Package",
+  "keywords": [
+    "API",
+    "dropbox",
+    "enterprise",
+    "file",
+    "music",
+    "share",
+    "video"
+  ],
+  "accounts": {
+    "domain": "openload.co",
+    "credentials": [
+      "login",
+      "key"
+    ]
+  },
+  "blocks": [{
+    "name": "getAccountInfo",
+    "description": "Everything account related (total used storage, reward)",
+    "args": [{
+      "name": "login",
+      "type": "credentials",
+      "info": "API-Login",
+      "required": true
+    },
+      {
+        "name": "key",
+        "type": "credentials",
+        "info": "API-Key / API-Password",
+        "required": true
+      }
+    ],
+    "callbacks": [{
+      "name": "error",
+      "info": "Error"
+    }, {
+      "name": "success",
+      "info": "Success"
+    }]
+  },
+    {
+      "name": "preparingDownload",
+      "description": "Preparing a Download",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "fileId",
+          "type": "String",
+          "info": "File-ID",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getDownloadLink",
+      "description": "Get a download link by using download ticket",
+      "args": [{
+        "name": "fileId",
+        "type": "String",
+        "info": "File-ID",
+        "required": true
+      },
+        {
+          "name": "ticket",
+          "type": "String",
+          "info": "Previously generated download ticket",
+          "required": true
+        },
+        {
+          "name": "captchaResponse",
+          "type": "String",
+          "info": "Result of the captcha",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "checkFileStatus",
+      "description": "Check the status of a file, e.g. if the file exists",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "fileId",
+          "type": "String",
+          "info": "File-ID",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "uploadFile",
+      "description": "File upload",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "file",
+          "type": "File",
+          "info": "Uploaded file",
+          "required": true
+        },
+        {
+          "name": "folderId",
+          "type": "String",
+          "info": "Folder-ID to upload to",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "uploadFileRemotely",
+      "description": "Remote Uploading a file",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "url",
+          "type": "File",
+          "info": "Remote URL",
+          "required": true
+        },
+        {
+          "name": "folderId",
+          "type": "String",
+          "info": "Folder-ID to upload to",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "checkRemoteUploadStatus",
+      "description": "Check Status of Remote Upload",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "info": "Remote Upload ID",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "type": "String",
+          "info": "Maximum number of results (Default: 5, Maximum: 100)",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "showFoldersContent",
+      "description": "Shows the content of your folders",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "folderId",
+          "type": "String",
+          "info": "Folder-ID",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "renameFolder",
+      "description": "Set a new name for a folders",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "folderId",
+          "type": "String",
+          "info": "Folder-ID",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "new Folder-Name",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "renameFile",
+      "description": "Set a new name for a file",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "fileId",
+          "type": "String",
+          "info": "File-ID",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "info": "new File-Name",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "convertFiles",
+      "description": "Convert previously uploaded files to a browser-streamable format (mp4 / h.264)",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "fileId",
+          "type": "String",
+          "info": "File-ID",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getRunningFileConverts",
+      "description": "Shows running file converts by folder",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "folderId",
+          "type": "String",
+          "info": "Folder-ID",
+          "required": false
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    },
+    {
+      "name": "getVideoThumbnail",
+      "description": "Shows the video splash image (thumbnail)",
+      "args": [{
+        "name": "login",
+        "type": "credentials",
+        "info": "API-Login",
+        "required": true
+      },
+        {
+          "name": "key",
+          "type": "credentials",
+          "info": "API-Key / API-Password",
+          "required": true
+        },
+        {
+          "name": "fileId",
+          "type": "String",
+          "info": "File-ID",
+          "required": true
+        }
+      ],
+      "callbacks": [{
+        "name": "error",
+        "info": "Error"
+      }, {
+        "name": "success",
+        "info": "Success"
+      }]
+    }
+  ]
+}
