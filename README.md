@@ -42,16 +42,6 @@ Check the status of a file, e.g. if the file exists
 | key   | credentials| API-Key / API-Password
 | fileId| String     | File-ID
 
-## Openload.uploadFile
-File upload
-
-| Field   | Type       | Description
-|---------|------------|----------
-| login   | credentials| API-Login
-| key     | credentials| API-Key / API-Password
-| file    | File       | Uploaded file
-| folderId| String     | Folder-ID to upload to
-
 ## Openload.uploadFileRemotely
 Remote Uploading a file
 
@@ -61,16 +51,6 @@ Remote Uploading a file
 | key     | credentials| API-Key / API-Password
 | url     | File       | Remote URL
 | folderId| String     | Folder-ID to upload to
-
-## Openload.checkRemoteUploadStatus
-Check Status of Remote Upload
-
-| Field| Type       | Description
-|------|------------|----------
-| login| credentials| API-Login
-| key  | credentials| API-Key / API-Password
-| id   | String     | Remote Upload ID
-| limit| String     | Maximum number of results (Default: 5, Maximum: 100)
 
 ## Openload.showFoldersContent
 Shows the content of your folders
